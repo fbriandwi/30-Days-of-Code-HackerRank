@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
 func main() {
 	var mealCost float64
-	var tipPercent, taxPercent int
-	fmt.Scan(&mealCost, &tipPercent, &taxPercent)
+    var tipPercent, taxPercent int
+    fmt.Scan(&mealCost, &tipPercent, &taxPercent)
 
-	totalCost := mealCost + (mealCost * float64(tipPercent) * 0.01) + (mealCost * float64(taxPercent) * 0.01)
-	fmt.Printf("The total meal cost is %.0f dollars.\n", totalCost)
-}
+    totalCost := mealCost + (mealCost * float64(tipPercent) / 100) + (mealCost * float64(taxPercent) / 100)
+    roundedTotalCost := math.Round(totalCost)
+    fmt.Printf("%.0f\n", roundedTotalCost)}
